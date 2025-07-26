@@ -144,6 +144,47 @@ Retrieves the authenticated user's profile. Requires a valid JWT token via `Auth
 
 ---
 
+## **POST /users/logout** Endpoint
+
+---
+
+#### Description
+
+Invalidates the current user's session by storing the token in the invalid tokens store and clearing the authentication cookie.
+
+#### Request
+
+##### Headers
+
+- `Authorization: Bearer <token>`
+- `Cookie: token=<token>`
+
+#### Responses
+
+---
+
+##### Success (200 OK)
+
+```json
+{ "message": "Logged out successfully" }
+```
+
+##### Errors
+
+###### 401 Unauthorized
+
+```json
+{ "message": "Unauthorized" }
+```
+
+###### 500 Internal Server Error
+
+```json
+{ "error": "Internal server error" }
+```
+
+---
+
 ## **POST /users/login** Endpoint
 
 ---

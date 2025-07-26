@@ -1,11 +1,18 @@
 const userModel = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const invalidTokenModel = require("../models/invalidToken.model");
 
 module.exports.authUser = async (req, res, next) => {
   // Check for token in cookies or authorization header
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
   if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  // Check if the token is invalidated after logout
+  const isTokenInvalid = await invalidTokenModel.findOne({ token: token });
+  if (isTokenInvalid) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 

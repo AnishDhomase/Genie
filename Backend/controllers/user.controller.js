@@ -1,6 +1,7 @@
 const userModel = require("../models/user.model");
 const userService = require("../services/user.service");
 const { validationResult } = require("express-validator");
+const invalidTokenModel = require("../models/invalidToken.model");
 
 module.exports.registerUser = async (req, res, next) => {
   // Check for validation errors from express-validator
@@ -64,6 +65,18 @@ module.exports.loginUser = async (req, res, next) => {
 
   // Respond with the user details and token
   res.status(200).json({ user, token });
+};
+
+module.exports.logoutUser = async (req, res, next) => {
+  //   Add this token to the invalid tokens collection
+  const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+  await invalidTokenModel.create({ token });
+
+  // Clear the token cookie to log out the user
+  res.clearCookie("token");
+
+  // Respond with a success message
+  res.status(200).json({ message: "Logged out successfully" });
 };
 
 module.exports.getUserProfile = async (req, res, next) => {
