@@ -278,3 +278,91 @@ Unexpected server error.
   "error": "Internal server error"
 }
 ```
+
+---
+
+## **POST /genies/register** Endpoint
+
+---
+
+#### Description
+
+---
+
+Registers a new genie (service provider). Validates input fields, hashes the password, and returns the created genie object along with a JWT authentication token.
+
+#### Request
+
+---
+
+##### Headers
+
+- `Content-Type: application/json`
+
+##### Body
+
+```json
+{
+  "fullname": {
+    "firstname": "string, required, min length 2",
+    "lastname": "string, optional, min length 2"
+  },
+  "email": "string, required, valid email format",
+  "password": "string, required, min length 6",
+  "vehicle": {
+    "color": "string, required, min length 3",
+    "id": "string, required, min length 3",
+    "capacity": "string, required, one of [xs, sm, md, lg, xl]",
+    "type": "string, required, one of [bicycle, bike, rikshaw, car, van, pickup, truck]"
+  }
+}
+```
+
+#### Responses
+
+---
+
+##### Success (201 Created)
+
+```json
+{
+  "genie": {
+    "_id": "string",
+    "fullname": { "firstname": "string", "lastname": "string" },
+    "email": "string",
+    "socketId": null,
+    "status": "inactive",
+    "vehicle": {
+      "color": "string",
+      "id": "string",
+      "capacity": "string",
+      "type": "string"
+    }
+  },
+  "token": "<JWT token string>"
+}
+```
+
+##### Errors
+
+###### 400 Bad Request
+
+```json
+{
+  "errors": [
+    /* validation error details */
+  ]
+}
+```
+
+###### 400 Bad Request (Already exists)
+
+```json
+{ "message": "Genie already exists" }
+```
+
+###### 500 Internal Server Error
+
+```json
+{ "error": "Internal server error" }
+```
