@@ -59,6 +59,14 @@ module.exports.loginUser = async (req, res, next) => {
   // Generate an authentication token for the user
   const token = user.generateAuthToken();
 
+  // Set the token in a cookie
+  res.cookie("token", token);
+
   // Respond with the user details and token
   res.status(200).json({ user, token });
+};
+
+module.exports.getUserProfile = async (req, res, next) => {
+  // respond with the user from the request object (set by auth middleware)
+  res.status(200).json(req.user);
 };

@@ -98,6 +98,52 @@ Unexpected server error.
 
 ---
 
+## **GET /users/profile** Endpoint
+
+---
+
+#### Description
+
+Retrieves the authenticated user's profile. Requires a valid JWT token via `Authorization` header or `token` cookie.
+
+#### Request
+
+##### Headers
+
+- `Authorization: Bearer <token>`
+- `Cookie: token=<token>`
+
+#### Responses
+
+---
+
+##### Success (200 OK)
+
+```json
+{
+  "_id": "string",
+  "fullname": { "firstname": "string", "lastname": "string" },
+  "email": "string",
+  "socketId": "string"
+}
+```
+
+##### Errors
+
+###### 401 Unauthorized
+
+```json
+{ "message": "Unauthorized" }
+```
+
+###### 500 Internal Server Error
+
+```json
+{ "error": "Internal server error" }
+```
+
+---
+
 ## **POST /users/login** Endpoint
 
 ---
@@ -126,6 +172,10 @@ Authenticates an existing user. Verifies provided email and password, and return
 ```
 
 #### Responses
+
+##### Response Headers
+
+- `Set-Cookie: token=<JWT token>; HttpOnly`
 
 ---
 
