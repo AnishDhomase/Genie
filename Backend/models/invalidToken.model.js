@@ -12,4 +12,4 @@ const invalidTokenSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("InvalidToken", invalidTokenSchema);
+module.exports = mongoose.model("invalidToken", invalidTokenSchema);

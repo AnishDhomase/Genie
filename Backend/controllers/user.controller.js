@@ -11,19 +11,20 @@ module.exports.registerUser = async (req, res, next) => {
   }
 
   // Destructure the request body
-  const {
-    fullname: { firstname, lastname },
-    email,
-    password,
-  } = req.body;
+  const { fullname, email, password } = req.body;
+
+  // Check if user with the same email already exists
+  const isExistingUser = await userModel.find({ email });
+  if (isExistingUser) {
+    return res.status(400).json({ message: "User already exists" });
+  }
 
   // Hash the password
   const hashedPassword = await userModel.hashPassword(password);
 
   // Create a new user using createUser in the user service
   const user = await userService.createUser({
-    firstname,
-    lastname,
+    fullname,
     email,
     password: hashedPassword,
   });
