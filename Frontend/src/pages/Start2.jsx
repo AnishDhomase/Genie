@@ -14,7 +14,7 @@ const Start2 = () => {
       {/* Content */}
       <div className="relative z-20 h-full pt-8 flex justify-between flex-col">
         {/* Title at Top */}
-        <h1 className="text-[40px] font-medium text-white mx-[30px]">genie</h1>
+        <h1 className="text-[30px] font-medium text-white mx-[25px]">genie</h1>
 
         {/* White Box at Bottom */}
         <div

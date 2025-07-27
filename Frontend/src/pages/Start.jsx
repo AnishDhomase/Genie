@@ -13,7 +13,7 @@ const Start = () => {
 
       {/* Content */}
       <div className="relative z-20 h-full pt-8 flex justify-between flex-col">
-        <h1 className="text-[40px] font-medium text-white mx-[30px]">genie</h1>
+        <h1 className="text-[30px] font-medium text-white mx-[25px]">genie</h1>
         <div className="bg-white pb-8 py-4 px-4">
           <h2 className="text-[30px] font-semibold">Get Started with Genie</h2>
           <Link
