@@ -455,3 +455,57 @@ Invalid email or password.
 ```json
 { "error": "Internal server error" }
 ```
+
+---
+
+## **GET /genies/profile** Endpoint
+
+---
+
+#### Description
+
+Retrieves the authenticated genie's profile. Requires a valid JWT token via `Authorization` header or `token` cookie.
+
+#### Request
+
+##### Headers
+
+- `Authorization: Bearer <token>`
+- `Cookie: token=<token>`
+
+#### Responses
+
+---
+
+##### Success (200 OK)
+
+```json
+{
+  "_id": "string",
+  "fullname": { "firstname": "string", "lastname": "string" },
+  "email": "string",
+  "socketId": "string",
+  "status": "string",
+  "vehicle": {
+    "color": "string",
+    "id": "string",
+    "capacity": "string",
+    "type": "string"
+  },
+  "location": { "lat": number, "lng": number }
+}
+```
+
+##### Errors
+
+###### 401 Unauthorized
+
+```json
+{ "message": "Unauthorized" }
+```
+
+###### 500 Internal Server Error
+
+```json
+{ "error": "Internal server error" }
+```

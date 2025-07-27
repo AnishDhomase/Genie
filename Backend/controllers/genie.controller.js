@@ -48,7 +48,6 @@ module.exports.loginGenie = async (req, res, next) => {
 
   // Find the genie by email
   const genie = await genieModel.findOne({ email }).select("+password");
-  console.log(genie);
   if (!genie) {
     return res.status(401).json({ message: "Invalid email or password" });
   }
@@ -67,4 +66,9 @@ module.exports.loginGenie = async (req, res, next) => {
 
   // Respond with the logged-in genie and token
   res.status(200).json({ genie, token });
+};
+
+module.exports.getGenieProfile = async (req, res, next) => {
+  // respond with the genie from the request object (set by auth middleware)
+  res.status(200).json(req.genie);
 };

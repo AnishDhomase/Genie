@@ -43,4 +43,10 @@ router.post(
   genieController.loginGenie
 );
 
+router.get(
+  "/profile",
+  authMiddleware.authGenie,
+  genieController.getGenieProfile
+);
+
 module.exports = router;
