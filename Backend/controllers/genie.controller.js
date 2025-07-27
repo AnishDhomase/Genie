@@ -1,6 +1,7 @@
 const genieModel = require("../models/genie.model");
 const genieService = require("../services/genie.service");
 const { validationResult } = require("express-validator");
+const invalidTokenModel = require("../models/invalidToken.model");
 
 module.exports.registerGenie = async (req, res, next) => {
   // Check for validation errors from express-validator
@@ -71,4 +72,16 @@ module.exports.loginGenie = async (req, res, next) => {
 module.exports.getGenieProfile = async (req, res, next) => {
   // respond with the genie from the request object (set by auth middleware)
   res.status(200).json(req.genie);
+};
+
+module.exports.logoutGenie = async (req, res, next) => {
+  // Add this token to the invalid tokens collection
+  const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+  await invalidTokenModel.create({ token });
+
+  // Clear the token cookie to log out the genie
+  res.clearCookie("token");
+
+  // Respond with a success message
+  res.status(200).json({ message: "Logged out successfully" });
 };

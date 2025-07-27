@@ -49,4 +49,6 @@ router.get(
   genieController.getGenieProfile
 );
 
+router.post("/logout", authMiddleware.authGenie, genieController.logoutGenie);
+
 module.exports = router;

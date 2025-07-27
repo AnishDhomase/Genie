@@ -509,3 +509,44 @@ Retrieves the authenticated genie's profile. Requires a valid JWT token via `Aut
 ```json
 { "error": "Internal server error" }
 ```
+
+---
+
+## **POST /genies/logout** Endpoint
+
+---
+
+#### Description
+
+Invalidates the current genie's session by adding the token to the invalid tokens store and clearing the authentication cookie.
+
+#### Request
+
+##### Headers
+
+- `Authorization: Bearer <token>`
+- `Cookie: token=<token>`
+
+#### Responses
+
+---
+
+##### Success (200 OK)
+
+```json
+{ "message": "Logged out successfully" }
+```
+
+##### Errors
+
+###### 401 Unauthorized
+
+```json
+{ "message": "Unauthorized" }
+```
+
+###### 500 Internal Server Error
+
+```json
+{ "error": "Internal server error" }
+```
