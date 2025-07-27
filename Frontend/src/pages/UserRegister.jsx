@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 const UserRegister = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [userData, setUserData] = useState({});
 
   const submitHandler = async (e) => {
     e.preventDefault();
     const newUser = {
       fullname: {
-        firstname: firstName,
-        lastname: lastName,
+        firstname: firstname,
+        lastname: lastname,
       },
       email: email,
       password: password,
@@ -47,7 +47,7 @@ const UserRegister = () => {
                 className="bg-[#eeeeee] w-1/2 rounded-lg px-4 py-2 border  text-lg placeholder:text-base"
                 type="text"
                 placeholder="First name"
-                value={firstName}
+                value={firstname}
                 onChange={(e) => {
                   setFirstName(e.target.value);
                 }}
@@ -57,7 +57,7 @@ const UserRegister = () => {
                 className="bg-[#eeeeee] w-1/2  rounded-lg px-4 py-2 border  text-lg placeholder:text-base"
                 type="text"
                 placeholder="Last name"
-                value={lastName}
+                value={lastname}
                 onChange={(e) => {
                   setLastName(e.target.value);
                 }}

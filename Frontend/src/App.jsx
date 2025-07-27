@@ -5,6 +5,7 @@ import UserRegister from "./pages/UserRegister";
 import GenieRegister from "./pages/GenieRegister";
 import Start2 from "./pages/Start2";
 import GenieLogin from "./pages/GenieLogin";
+import { useContext } from "react";
 
 const App = () => {
   return (
