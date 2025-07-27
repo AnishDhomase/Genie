@@ -4,12 +4,14 @@ import UserLogin from "./pages/UserLogin";
 import UserRegister from "./pages/UserRegister";
 import GenieLogin from "./pages/GenieLogin";
 import GenieRegister from "./pages/GenieRegister";
+import Start2 from "./pages/Start2";
 
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Start />} />
+        <Route path="/user-roles" element={<Start2 />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/register" element={<UserRegister />} />
         <Route path="/genie-login" element={<GenieLogin />} />
