@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const invalidTokenModel = require("../models/invalidToken.model");
 
+// Middleware to authenticate user requests
 module.exports.authUser = async (req, res, next) => {
   // Check for token in cookies or authorization header
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];

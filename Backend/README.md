@@ -366,3 +366,92 @@ Registers a new genie (service provider). Validates input fields, hashes the pas
 ```json
 { "error": "Internal server error" }
 ```
+
+---
+
+## **POST /genies/login** Endpoint
+
+---
+
+#### Description
+
+---
+
+Authenticates an existing genie. Verifies provided email and password, sets an HttpOnly token cookie, and returns the genie object with a JWT token.
+
+#### Request
+
+---
+
+##### Headers
+
+- `Content-Type: application/json`
+
+##### Body
+
+```json
+{
+  "email": "string, required, valid email format",
+  "password": "string, required, min length 6"
+}
+```
+
+#### Responses
+
+---
+
+##### Response Headers
+
+- `Set-Cookie: token=<JWT token>; HttpOnly`
+
+---
+
+##### Success (200 OK)
+
+```json
+{
+  "genie": {
+    "_id": "string",
+    "fullname": { "firstname": "string", "lastname": "string" },
+    "email": "string",
+    "socketId": null,
+    "status": "inactive",
+    "vehicle": {
+      "color": "string",
+      "id": "string",
+      "capacity": "string",
+      "type": "string"
+    }
+  },
+  "token": "<JWT token string>"
+}
+```
+
+##### Errors
+
+###### 400 Bad Request
+
+```json
+{
+  "errors": [
+    /* validation error details */
+  ]
+}
+```
+
+###### 401 Unauthorized
+
+Invalid email or password.
+**Body:**
+
+```json
+{ "message": "Invalid email or password" }
+```
+
+###### 500 Internal Server Error
+
+**Body:**
+
+```json
+{ "error": "Internal server error" }
+```
