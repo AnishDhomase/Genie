@@ -64,7 +64,7 @@ const GenieLogin = () => {
         </form>
         <p className="text-center">
           New here?{" "}
-          <Link to="/genie-signup" className="text-blue-600">
+          <Link to="/genie-register" className="text-blue-600">
             Create an account
           </Link>
         </p>
