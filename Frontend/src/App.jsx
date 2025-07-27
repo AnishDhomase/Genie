@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import Start from "./pages/Start";
 import UserLogin from "./pages/UserLogin";
 import UserRegister from "./pages/UserRegister";
 import GenieLogin from "./pages/GenieLogin";
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Start />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/register" element={<UserRegister />} />
         <Route path="/genie-login" element={<GenieLogin />} />
