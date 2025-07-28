@@ -7,6 +7,7 @@ import Start2 from "./pages/Start2";
 import GenieLogin from "./pages/GenieLogin";
 import Home from "./pages/Home";
 import AuthOnlyUserWrapper from "./pages/AuthOnlyUserWrapper";
+import UserLogout from "./pages/UserLogout";
 
 const App = () => {
   return (
@@ -18,12 +19,19 @@ const App = () => {
         <Route path="/register" element={<UserRegister />} />
         <Route path="/genie-login" element={<GenieLogin />} />
         <Route path="/genie-register" element={<GenieRegister />} />
-
         <Route
           path="/home"
           element={
             <AuthOnlyUserWrapper>
               <Home />
+            </AuthOnlyUserWrapper>
+          }
+        />
+        <Route
+          path="/user/logout"
+          element={
+            <AuthOnlyUserWrapper>
+              <UserLogout />
             </AuthOnlyUserWrapper>
           }
         />
