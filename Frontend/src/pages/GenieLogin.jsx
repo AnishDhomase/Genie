@@ -64,14 +64,14 @@ const GenieLogin = () => {
         </form>
         <p className="text-center">
           New here?{" "}
-          <Link to="/genie-register" className="text-blue-600">
+          <Link to="/genie/register" className="text-blue-600">
             Create an account
           </Link>
         </p>
       </div>
       <div>
         <Link
-          to="/login"
+          to="/user/login"
           className="bg-[#878787] flex items-center justify-center text-white font-semibold mb-5 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base"
         >
           Continue as User

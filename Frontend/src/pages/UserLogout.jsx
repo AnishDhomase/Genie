@@ -19,7 +19,7 @@ const UserLogout = () => {
       console.log("Logout successful", response);
       if (response.status === 200) {
         localStorage.removeItem("token");
-        navigate("/login");
+        navigate("user/login");
       }
     })
     .catch((error) => {

@@ -13,14 +13,14 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Start />} />
-        <Route path="/user-roles" element={<Start2 />} />
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/register" element={<UserRegister />} />
-        <Route path="/genie-login" element={<GenieLogin />} />
-        <Route path="/genie-register" element={<GenieRegister />} />
+        <Route path="/onboarding/1" element={<Start />} />
+        <Route path="/onboarding/2" element={<Start2 />} />
+        <Route path="/user/login" element={<UserLogin />} />
+        <Route path="/user/register" element={<UserRegister />} />
+        <Route path="/genie/login" element={<GenieLogin />} />
+        <Route path="/genie/register" element={<GenieRegister />} />
         <Route
-          path="/home"
+          path="user/home"
           element={
             <AuthOnlyUserWrapper>
               <Home />

@@ -7,7 +7,7 @@ const AuthOnlyUserWrapper = ({ children }) => {
 
   useEffect(() => {
     if (!token) {
-      navigate("/login");
+      navigate("/user/login");
     }
   }, [token]);
 

@@ -29,13 +29,13 @@ const Start2 = () => {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              to="/login"
+              to="/user/login"
               className="flex-1 text-center bg-gray-800 text-white text-base sm:text-lg font-medium py-3 rounded-lg"
             >
               Continue as User
             </Link>
             <Link
-              to="/genie-login"
+              to="/genie/login"
               className="flex-1 text-center bg-black text-white text-base sm:text-lg font-medium py-3 rounded-lg"
             >
               Continue as Genie

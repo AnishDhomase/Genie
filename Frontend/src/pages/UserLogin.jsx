@@ -28,7 +28,7 @@ const UserLogin = () => {
       const data = response.data;
       setUser(data.user);
       localStorage.setItem("token", data.token);
-      navigate("/home");
+      navigate("/user/home");
     }
 
     setEmail("");
@@ -78,14 +78,14 @@ const UserLogin = () => {
         </form>
         <p className="text-center">
           New here?{" "}
-          <Link to="/register" className="text-blue-600">
+          <Link to="/user/register" className="text-blue-600">
             Create an account
           </Link>
         </p>
       </div>
       <div>
         <Link
-          to="/genie-login"
+          to="/genie/login"
           className="bg-[#878787] flex items-center justify-center text-white font-semibold mb-5 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base"
         >
           Continue as Genie

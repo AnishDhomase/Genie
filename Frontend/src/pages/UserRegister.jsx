@@ -34,7 +34,7 @@ const UserRegister = () => {
       const data = response.data;
       setUser(data.user);
       localStorage.setItem("token", data.token);
-      navigate("/home");
+      navigate("/user/home");
     }
 
     setEmail("");
@@ -110,7 +110,7 @@ const UserRegister = () => {
           </form>
           <p className="text-center">
             Already have an account?{" "}
-            <Link to="/login" className="text-blue-600">
+            <Link to="/user/login" className="text-blue-600">
               Login
             </Link>
           </p>
