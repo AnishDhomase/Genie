@@ -1,21 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { GenieDataContext } from "../context/GenieContext";
+import { useContext } from "react";
+import axios from "axios";
 
 const GenieLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userData, setUserData] = useState({});
+  const { genie, setGenie } = useContext(GenieDataContext);
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const userData = {
+    const genieData = {
       email: email,
       password: password,
     };
 
-    setUserData(userData);
+    const response = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/genies/login`,
+      genieData
+    );
+
+    if (response.status === 200) {
+      const data = response.data;
+      setGenie(data.genie);
+      localStorage.setItem("token", data.token);
+      navigate("/genie/home");
+    }
 
     setEmail("");
     setPassword("");
