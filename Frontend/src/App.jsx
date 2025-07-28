@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import AuthOnlyUserWrapper from "./pages/AuthOnlyUserWrapper";
 import UserLogout from "./pages/UserLogout";
 import GenieHome from "./pages/GenieHome";
+import AuthOnlyGenieWrapper from "./pages/AuthOnlyGenieWrapper";
 
 const App = () => {
   return (
@@ -39,9 +40,9 @@ const App = () => {
         <Route
           path="/genie/home"
           element={
-            <AuthOnlyUserWrapper>
+            <AuthOnlyGenieWrapper>
               <GenieHome />
-            </AuthOnlyUserWrapper>
+            </AuthOnlyGenieWrapper>
           }
         />
       </Routes>

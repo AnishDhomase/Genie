@@ -1,36 +1,36 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserDataContext } from "../context/UserContext";
+import { GenieDataContext } from "../context/GenieContext";
 import { useContext } from "react";
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
-const AuthOnlyUserWrapper = ({ children }) => {
+const AuthOnlyGenieWrapper = ({ children }) => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const { user, setUser } = useContext(UserDataContext);
+  const { genie, setGenie } = useContext(GenieDataContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!token) {
-      navigate("/user/login");
+      navigate("/genie/login");
     }
   }, [token]);
 
   axios
-    .get(`${import.meta.env.VITE_BASE_URL}/users/profile`, {
+    .get(`${import.meta.env.VITE_BASE_URL}/genies/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
     .then((response) => {
       if (response.status === 200) {
-        setUser(response.data.genie);
+        setGenie(response.data.genie);
       }
     })
     .catch(() => {
       localStorage.removeItem("token");
-      navigate("/user/login");
+      navigate("/genie/login");
     })
     .finally(() => {
       setIsLoading(false);
@@ -41,4 +41,4 @@ const AuthOnlyUserWrapper = ({ children }) => {
   return <>{children}</>;
 };
 
-export default AuthOnlyUserWrapper;
+export default AuthOnlyGenieWrapper;

@@ -4,7 +4,7 @@ export const GenieDataContext = createContext();
 
 const GenieContext = ({ children }) => {
   const [genie, setGenie] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const updateGenie = (genieData) => {
