@@ -8,6 +8,7 @@ import GenieLogin from "./pages/GenieLogin";
 import Home from "./pages/Home";
 import AuthOnlyUserWrapper from "./pages/AuthOnlyUserWrapper";
 import UserLogout from "./pages/UserLogout";
+import GenieHome from "./pages/GenieHome";
 
 const App = () => {
   return (
@@ -32,6 +33,14 @@ const App = () => {
           element={
             <AuthOnlyUserWrapper>
               <UserLogout />
+            </AuthOnlyUserWrapper>
+          }
+        />
+        <Route
+          path="/genie/home"
+          element={
+            <AuthOnlyUserWrapper>
+              <GenieHome />
             </AuthOnlyUserWrapper>
           }
         />

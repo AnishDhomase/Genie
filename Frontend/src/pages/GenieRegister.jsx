@@ -44,7 +44,7 @@ const GenieRegister = () => {
 
     if (response.status === 201) {
       const data = response.data;
-      setGenie(data.captain);
+      setGenie(data.genie);
       localStorage.setItem("token", data.token);
       navigate("/genie/home");
     }
@@ -169,17 +169,47 @@ const GenieRegister = () => {
               onChange={(e) => {
                 setVehicleType(e.target.value);
               }}
+              onClick={() => {
+                console.log("vehicleCapacity");
+                if (!vehicleCapacity) {
+                  alert("Please select a vehicle capacity first.");
+                }
+              }}
             >
               <option value="" disabled>
                 Type
               </option>
-              <option value="bicycle">Bicycle</option>
-              <option value="bike">Bike</option>
+              {vehicleCapacity === "xs" && (
+                <option value="bicycle">Bicycle</option>
+              )}
+              {(vehicleCapacity === "xs" || vehicleCapacity === "sm") && (
+                <option value="bike">Bike</option>
+              )}
+              {(vehicleCapacity === "xs" ||
+                vehicleCapacity === "sm" ||
+                vehicleCapacity === "md") && (
+                <>
+                  <option value="rikshaw">Rikshaw</option>
+                  <option value="car">Car</option>
+                  <option value="van">Van</option>
+                </>
+              )}
+              {(vehicleCapacity === "md" ||
+                vehicleCapacity === "lg" ||
+                vehicleCapacity === "xl") && (
+                <option value="pickup">Pickup</option>
+              )}
+              {(vehicleCapacity === "lg" || vehicleCapacity === "xl") && (
+                <option value="truck">Truck</option>
+              )}
+
+              {/* <option value="bike">Bike</option>
               <option value="rikshaw">Rikshaw</option>
               <option value="car">Car</option>
               <option value="van">Van</option>
               <option value="pickup">Pickup</option>
               <option value="truck">Truck</option>
+              */}
             </select>
           </div>
 
