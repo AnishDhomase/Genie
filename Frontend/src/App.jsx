@@ -5,7 +5,7 @@ import UserRegister from "./pages/UserRegister";
 import GenieRegister from "./pages/GenieRegister";
 import Start2 from "./pages/Start2";
 import GenieLogin from "./pages/GenieLogin";
-import { useContext } from "react";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
@@ -17,6 +17,7 @@ const App = () => {
         <Route path="/register" element={<UserRegister />} />
         <Route path="/genie-login" element={<GenieLogin />} />
         <Route path="/genie-register" element={<GenieRegister />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   );

@@ -12,7 +12,9 @@ const UserContext = ({ children }) => {
     email: "",
   });
   return (
-    <UserDataContext.Provider value={user}>{children}</UserDataContext.Provider>
+    <UserDataContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserDataContext.Provider>
   );
 };
 
